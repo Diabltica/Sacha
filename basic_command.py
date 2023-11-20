@@ -32,7 +32,7 @@ async def main():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                elif event.type == pygame.KEYDOWN or event.type == pygame.KEYUP:
+                elif event.type == pygame.KEYDOWN: 
                     # Récupérer la touche appuyée ou relâchée
                     keys = pygame.key.get_pressed()
                     propulsion = 128 if keys[pygame.K_a] else propulsion
