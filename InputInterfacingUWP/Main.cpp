@@ -53,7 +53,7 @@ public:
         CoreApplication::Resuming +=
             ref new EventHandler<Platform::Object^>(this, &ViewProvider::OnResuming);
 
-        m_sample = std::make_unique<Sample>();
+        m_steeringWheel = std::make_unique<Wheel>();
 
         // Sample Usage Telemetry
         //
@@ -77,7 +77,7 @@ public:
 
     virtual void Uninitialize()
     {
-        m_sample.reset();
+        m_steeringWheel.reset();
     }
 
     virtual void SetWindow(CoreWindow^ window)
@@ -140,7 +140,7 @@ public:
             std::swap(outputWidth, outputHeight);
         }
 
-        m_sample->Initialize(reinterpret_cast<IUnknown*>(window),
+        m_steeringWheel->Initialize(reinterpret_cast<IUnknown*>(window),
                            outputWidth, outputHeight, rotation );
     }
 
@@ -154,8 +154,7 @@ public:
         {
             if (m_visible)
             {
-                m_sample->Tick();
-
+                m_steeringWheel->Tick();
                 CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
             }
             else
@@ -182,7 +181,7 @@ protected:
         }
 
         int w, h;
-        m_sample->GetDefaultSize(w, h);
+        m_steeringWheel->GetDefaultSize(w, h);
 
         m_DPI = DisplayInformation::GetForCurrentView()->LogicalDpi;
 
@@ -212,7 +211,7 @@ protected:
 
         create_task([this, deferral]()
         {
-            m_sample->OnSuspending();
+            m_steeringWheel->OnSuspending();
 
             deferral->Complete();
         });
@@ -220,7 +219,7 @@ protected:
 
     void OnResuming(Platform::Object^ sender, Platform::Object^ args)
     {
-        m_sample->OnResuming();
+        m_steeringWheel->OnResuming();
     }
 
     void OnWindowSizeChanged(CoreWindow^ sender, WindowSizeChangedEventArgs^ args)
@@ -252,9 +251,9 @@ protected:
     {
         m_visible = args->Visible;
         if (m_visible)
-            m_sample->OnActivated();
+            m_steeringWheel->OnActivated();
         else
-            m_sample->OnDeactivated();
+            m_steeringWheel->OnDeactivated();
     }
 
     void OnWindowClosed(CoreWindow^ sender, CoreWindowEventArgs^ args)
@@ -302,7 +301,7 @@ protected:
 
     void OnDisplayContentsInvalidated(DisplayInformation^ sender, Object^ args)
     {
-        m_sample->ValidateDevice();
+        m_steeringWheel->ValidateDevice();
     }
 
 private:
@@ -312,7 +311,7 @@ private:
     float                   m_DPI;
     float                   m_logicalWidth;
     float                   m_logicalHeight;
-    std::unique_ptr<Sample> m_sample;
+    std::unique_ptr<Wheel> m_steeringWheel;
 
     Windows::Graphics::Display::DisplayOrientations	m_nativeOrientation;
     Windows::Graphics::Display::DisplayOrientations	m_currentOrientation;
@@ -391,7 +390,7 @@ private:
             std::swap(outputWidth, outputHeight);
         }
 
-        m_sample->OnWindowSizeChanged(outputWidth, outputHeight, rotation);
+        m_steeringWheel->OnWindowSizeChanged(outputWidth, outputHeight, rotation);
     }
 };
 

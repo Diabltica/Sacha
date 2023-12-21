@@ -69,9 +69,6 @@
   <ItemGroup>
     <None Include="Readme.docx" />
     <None Include="..\Media\Fonts\SegoeUI_24.spritefont" />
-    <None Include="..\Kits\Telemetry\ARM\ATGTelemetryUWP.dll" />
-    <None Include="..\Kits\Telemetry\ARM64\ATGTelemetryUWP.dll" />
-    <None Include="..\Kits\Telemetry\Win32\ATGTelemetryUWP.dll" />
     <None Include="..\Kits\Telemetry\x64\ATGTelemetryUWP.dll" />
   </ItemGroup>
 </Project>

@@ -28,7 +28,7 @@ namespace
     {
         L"<Navigation Test>\n",
         L"<ArcadeStick Test>\n",
-        L"<RacingWheel Test>\n",
+        L"<RacingWheel>\n",
 		L"<FlightStick Test>\n",
 	};
 
@@ -38,192 +38,7 @@ namespace
         L"arcade sticks\n";
 }
 
-void Sample::GenerateNavString()
-{
-    m_buttonString = L"Nav inputs pressed:  ";
-
-    if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Up) == RequiredUINavigationButtons::Up)
-    {
-        m_buttonString += L"Up ";
-    }
-
-    if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Down) == RequiredUINavigationButtons::Down)
-    {
-        m_buttonString += L"Down ";
-    }
-
-    if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Left) == RequiredUINavigationButtons::Left)
-    {
-        m_buttonString += L"Left ";
-    }
-
-    if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Right) == RequiredUINavigationButtons::Right)
-    {
-        m_buttonString += L"Right ";
-    }
-
-    if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Accept) == RequiredUINavigationButtons::Accept)
-    {
-        m_buttonString += L"Accept ";
-    }
-
-    if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Cancel) == RequiredUINavigationButtons::Cancel)
-    {
-        m_buttonString += L"Cancel ";
-    }
-
-    if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Menu) == RequiredUINavigationButtons::Menu)
-    {
-        m_buttonString += L"Menu ";
-    }
-
-    if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::View) == RequiredUINavigationButtons::View)
-    {
-        m_buttonString += L"View ";
-    }
-}
-
-void Sample::GenerateStickString()
-{
-    m_buttonString = L"Arcade Stick inputs pressed:  ";
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::StickUp) == ArcadeStickButtons::StickUp)
-    {
-        m_buttonString += L"Up ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::StickDown) == ArcadeStickButtons::StickDown)
-    {
-        m_buttonString += L"Down ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::StickLeft) == ArcadeStickButtons::StickLeft)
-    {
-        m_buttonString += L"Left ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::StickRight) == ArcadeStickButtons::StickRight)
-    {
-        m_buttonString += L"Right ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::Action1) == ArcadeStickButtons::Action1)
-    {
-        m_buttonString += L"1 ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::Action2) == ArcadeStickButtons::Action2)
-    {
-        m_buttonString += L"2 ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::Action3) == ArcadeStickButtons::Action3)
-    {
-        m_buttonString += L"3 ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::Action4) == ArcadeStickButtons::Action4)
-    {
-        m_buttonString += L"4 ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::Action5) == ArcadeStickButtons::Action5)
-    {
-        m_buttonString += L"5 ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::Action6) == ArcadeStickButtons::Action6)
-    {
-        m_buttonString += L"6 ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::Special1) == ArcadeStickButtons::Special1)
-    {
-        m_buttonString += L"S1 ";
-    }
-
-    if ((m_arcadeReading.Buttons & ArcadeStickButtons::Special2) == ArcadeStickButtons::Special2)
-    {
-        m_buttonString += L"S2 ";
-    }
-}
-
-void Sample::DrawFlightStick(DirectX::XMFLOAT2 startPosition)
-{
-	std::wstring localButtonString = L"Flight Stick inputs pressed:  ";
-	wchar_t stickString[128] = {};
-
-	if ((m_flightStickReading.Buttons & FlightStickButtons::FirePrimary) == FlightStickButtons::FirePrimary)
-	{
-		localButtonString += L"FirePrimary ";
-	}
-
-	if ((m_flightStickReading.Buttons & FlightStickButtons::FireSecondary) == FlightStickButtons::FireSecondary)
-	{
-		localButtonString += L"FireSecondary ";
-	}
-	
-	if ((m_flightStickReading.HatSwitch & GameControllerSwitchPosition::Up) == GameControllerSwitchPosition::Up)
-	{
-		localButtonString += L"HatUp ";
-	}
-
-	if ((m_flightStickReading.HatSwitch & GameControllerSwitchPosition::UpRight) == GameControllerSwitchPosition::UpRight)
-	{
-		localButtonString += L"HatUpRight ";
-	}
-
-	if ((m_flightStickReading.HatSwitch & GameControllerSwitchPosition::Right) == GameControllerSwitchPosition::Right)
-	{
-		localButtonString += L"HatRight ";
-	}
-
-	if ((m_flightStickReading.HatSwitch & GameControllerSwitchPosition::DownRight) == GameControllerSwitchPosition::DownRight)
-	{
-		localButtonString += L"HatDownRight ";
-	}
-
-	if ((m_flightStickReading.HatSwitch & GameControllerSwitchPosition::Down) == GameControllerSwitchPosition::Down)
-	{
-		localButtonString += L"HatDown ";
-	}
-
-	if ((m_flightStickReading.HatSwitch & GameControllerSwitchPosition::DownLeft) == GameControllerSwitchPosition::DownLeft)
-	{
-		localButtonString += L"HatDownLeft ";
-	}
-
-	if ((m_flightStickReading.HatSwitch & GameControllerSwitchPosition::Left) == GameControllerSwitchPosition::Left)
-	{
-		localButtonString += L"HatLeft ";
-	}
-
-	if ((m_flightStickReading.HatSwitch & GameControllerSwitchPosition::UpLeft) == GameControllerSwitchPosition::UpLeft)
-	{
-		localButtonString += L"HatUpLeft ";
-	}
-
-	m_font->DrawString(m_spriteBatch.get(), localButtonString.c_str(), startPosition, ATG::Colors::Green);
-	startPosition.y += m_font->GetLineSpacing() * 1.1f;
-
-	swprintf_s(stickString, L"Roll %1.3f", m_flightStickReading.Roll);
-	m_font->DrawString(m_spriteBatch.get(), stickString, startPosition, ATG::Colors::Green);
-	startPosition.y += m_font->GetLineSpacing() * 1.1f;
-
-	swprintf_s(stickString, L"Pitch %1.3f", m_flightStickReading.Pitch);
-	m_font->DrawString(m_spriteBatch.get(), stickString, startPosition, ATG::Colors::Green);
-	startPosition.y += m_font->GetLineSpacing() * 1.1f;
-
-	swprintf_s(stickString, L"Yaw %1.3f", m_flightStickReading.Yaw);
-	m_font->DrawString(m_spriteBatch.get(), stickString, startPosition, ATG::Colors::Green);
-	startPosition.y += m_font->GetLineSpacing() * 1.1f;
-
-	swprintf_s(stickString, L"Throttle %1.3f", m_flightStickReading.Throttle);
-	m_font->DrawString(m_spriteBatch.get(), stickString, startPosition, ATG::Colors::Green);
-	startPosition.y += m_font->GetLineSpacing() * 1.1f;
-}
-
-void Sample::DrawWheel(XMFLOAT2 startPosition)
+void Wheel::DrawWheel(XMFLOAT2 startPosition)
 {
     wchar_t wheelString[128] = {};
 
@@ -267,7 +82,7 @@ void Sample::DrawWheel(XMFLOAT2 startPosition)
     }
 }
 
-void Sample::UpdateNavController()
+void Wheel::UpdateNavController()
 {
     UINavigationController ^ mostRecentNav = nullptr;
 
@@ -282,37 +97,7 @@ void Sample::UpdateNavController()
     }
 }
 
-void Sample::UpdateArcadeStick()
-{
-    ArcadeStick^ mostRecentStick = nullptr;
-
-    if (m_stickCollection->Size > 0)
-    {
-        mostRecentStick = m_stickCollection->GetAt(0);
-    }
-
-    if (m_currentStick != mostRecentStick)
-    {
-        m_currentStick = mostRecentStick;
-    }
-}
-
-void Sample::UpdateFlightStick()
-{
-    FlightStick^ mostRecentFlightStick = nullptr;
-
-    if (m_flightStickCollection->Size > 0)
-    {
-        mostRecentFlightStick = m_flightStickCollection->GetAt(0);
-    }
-
-    if (m_currentFlightStick != mostRecentFlightStick)
-    {
-        m_currentFlightStick = mostRecentFlightStick;
-    }
-}
-
-void Sample::UpdateWheel()
+void Wheel::UpdateWheel()
 {
     RacingWheel^ mostRecentWheel = nullptr;
 
@@ -364,14 +149,14 @@ void Sample::UpdateWheel()
 
 
 
-Sample::Sample() noexcept(false)
+Wheel::Wheel() noexcept(false)
 {
     m_deviceResources = std::make_unique<DX::DeviceResources>();
     m_deviceResources->RegisterDeviceNotify(this);
 }
 
 // Initialize the Direct3D resources required to run.
-void Sample::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation)
+void Wheel::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation)
 {
     m_deviceResources->SetWindow(window, width, height, rotation);
 
@@ -397,20 +182,12 @@ void Sample::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTAT
     m_effect->SetParameters(vector, time);
 
     m_navCollection = ref new Vector<UINavigationController^>();
-    m_stickCollection = ref new Vector<ArcadeStick^>();
     m_wheelCollection = ref new Vector<RacingWheel^>();
-	m_flightStickCollection = ref new Vector<FlightStick^>();
 
     auto navControllers = UINavigationController::UINavigationControllers;
     for (auto controller : navControllers)
     {
         m_navCollection->Append(controller);
-    }
-
-    auto stickControllers = ArcadeStick::ArcadeSticks;
-    for (auto controller : stickControllers)
-    {
-        m_stickCollection->Append(controller);
     }
 
     auto wheelControllers = RacingWheel::RacingWheels;
@@ -419,76 +196,37 @@ void Sample::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTAT
         m_wheelCollection->Append(controller);
     }
 
-	auto flightStickControllers = FlightStick::FlightSticks;
-	for (auto controller : flightStickControllers)
-	{
-		m_flightStickCollection->Append(controller);
-	}
-
-	UINavigationController::UINavigationControllerAdded += ref new EventHandler<UINavigationController^ >([=](Platform::Object^, UINavigationController^ args)
-    {
-        m_navCollection->Append(args);
-        UpdateNavController();
-    });
+    UINavigationController::UINavigationControllerAdded += ref new EventHandler<UINavigationController^ >([=](Platform::Object^, UINavigationController^ args)
+        {
+            m_navCollection->Append(args);
+            UpdateNavController();
+        });
 
     UINavigationController::UINavigationControllerRemoved += ref new EventHandler<UINavigationController^ >([=](Platform::Object^, UINavigationController^ args)
-    {
-        unsigned int index;
-        if (m_navCollection->IndexOf(args, &index))
         {
-            m_navCollection->RemoveAt(index);
-            UpdateNavController();
-        }
-    });
-
-    ArcadeStick::ArcadeStickAdded += ref new EventHandler<ArcadeStick^ >([=](Platform::Object^, ArcadeStick^ args)
-    {
-        m_stickCollection->Append(args);
-        UpdateArcadeStick();
-    });
-
-    ArcadeStick::ArcadeStickRemoved += ref new EventHandler<ArcadeStick^ >([=](Platform::Object^, ArcadeStick^ args)
-    {
-        unsigned int index;
-        if (m_stickCollection->IndexOf(args, &index))
-        {
-            m_stickCollection->RemoveAt(index);
-            UpdateArcadeStick();
-        }
-    });
-
+            unsigned int index;
+            if (m_navCollection->IndexOf(args, &index))
+            {
+                m_navCollection->RemoveAt(index);
+                UpdateNavController();
+            }
+        });
     RacingWheel::RacingWheelAdded += ref new EventHandler<RacingWheel^ >([=](Platform::Object^, RacingWheel^ args)
-    {
-        m_wheelCollection->Append(args);
-        UpdateWheel();
-    });
+        {
+            m_wheelCollection->Append(args);
+            UpdateWheel();
+        });
 
     RacingWheel::RacingWheelRemoved += ref new EventHandler<RacingWheel^ >([=](Platform::Object^, RacingWheel^ args)
-    {
-        unsigned int index;
-        if (m_wheelCollection->IndexOf(args, &index))
         {
-            m_wheelCollection->RemoveAt(index);
-            UpdateWheel();
-        }
-    });
+            unsigned int index;
+            if (m_wheelCollection->IndexOf(args, &index))
+            {
+                m_wheelCollection->RemoveAt(index);
+                UpdateWheel();
+            }
+        });
 
-	FlightStick::FlightStickAdded += ref new EventHandler<FlightStick^ >([=](Platform::Object^, FlightStick^ args)
-	{
-		m_flightStickCollection->Append(args);
-		UpdateFlightStick();
-	});
-
-	FlightStick::FlightStickRemoved += ref new EventHandler<FlightStick^ >([=](Platform::Object^, FlightStick^ args)
-	{
-		unsigned int index;
-		if (m_flightStickCollection->IndexOf(args, &index))
-		{
-			m_flightStickCollection->RemoveAt(index);
-            UpdateFlightStick();
-		}
-	});
-	
     // UWP on Xbox One triggers a back request whenever the B button is pressed
     // which can result in the app being suspended if unhandled
     using namespace Windows::UI::Core;
@@ -496,14 +234,14 @@ void Sample::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTAT
     auto navigation = SystemNavigationManager::GetForCurrentView();
 
     navigation->BackRequested += ref new EventHandler<BackRequestedEventArgs^>([](Platform::Object^, BackRequestedEventArgs^ args)
-    {
-        args->Handled = true;
-    });
+        {
+            args->Handled = true;
+        });
 }
 
 #pragma region Frame Update
 // Executes basic render loop.
-void Sample::Tick()
+void Wheel::Tick()
 {
     m_timer.Tick([&]()
     {
@@ -514,12 +252,11 @@ void Sample::Tick()
 }
 
 // Updates the world.
-void Sample::Update(DX::StepTimer const& )
+void Wheel::Update(DX::StepTimer const& )
 {
     PIXBeginEvent(PIX_COLOR_DEFAULT, L"Update");
 
     bool toggleFFB = false;
-
     if (m_currentNav == nullptr)
     {
         m_connected = false;
@@ -527,93 +264,26 @@ void Sample::Update(DX::StepTimer const& )
         PIXEndEvent();
         return;
     }
-
+    m_currentMode = RacingWheelDevice;
     m_connected = true;
-	m_navReading = m_currentNav->GetCurrentReading();
+    m_navReading = m_currentNav->GetCurrentReading();
 
     if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::View) == RequiredUINavigationButtons::View)
     {
         ExitSample();
     }
-
-    if (!m_selectPressed)
+    if (m_currentWheel != nullptr)
     {
-        if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Right) == RequiredUINavigationButtons::Right)
-        {
-            m_selectPressed = true;
-            m_currentMode = (Modes)((m_currentMode + 1) % _countof(c_InputTestNames));
-        }
-        else if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Left) == RequiredUINavigationButtons::Left)
-        {
-            m_selectPressed = true;
-            if (m_currentMode == NavigationDevice)
-            {
-                m_currentMode = RacingWheelDevice;
-            }
-            else
-            {
-                m_currentMode = (Modes)(m_currentMode - 1);
-            }
-        }
-        else if ((m_navReading.RequiredButtons & RequiredUINavigationButtons::Accept) == RequiredUINavigationButtons::Accept)
-        {
-            m_selectPressed = true;
-            toggleFFB = true;
-        }
+        m_wheelReading = m_currentWheel->GetCurrentReading();
+        m_buttonReading = m_wheelReading.Buttons;
     }
-    else
-    {
-        if ((m_navReading.RequiredButtons & (RequiredUINavigationButtons::Right | RequiredUINavigationButtons::Left | RequiredUINavigationButtons::Accept)) == RequiredUINavigationButtons::None)
-        {
-            m_selectPressed = false;
-        }
-    }
-
-    switch (m_currentMode)
-    {
-    case NavigationDevice:
-        GenerateNavString();
-        break;
-    case ArcadeStickDevice:
-        if (m_currentStick != nullptr)
-        {
-            m_arcadeReading = m_currentStick->GetCurrentReading();
-            GenerateStickString();
-        }
-        break;
-	case FlightStickDevice:
-		if (m_currentFlightStick != nullptr)
-		{
-			m_flightStickReading = m_currentFlightStick->GetCurrentReading();
-		}
-		break;
-	case RacingWheelDevice:
-        if (m_currentWheel != nullptr)
-        {
-            m_wheelReading = m_currentWheel->GetCurrentReading();
-            m_buttonReading = m_wheelReading.Buttons;
-            if(m_effectLoaded && toggleFFB)
-            {
-                if (m_effect->State == ForceFeedback::ForceFeedbackEffectState::Running)
-                {
-                    m_effect->Stop();
-                }
-                else
-                {
-                    m_effect->Start();
-                }
-            }
-        }
-        break;
-    }
-
     PIXEndEvent();
 }
 #pragma endregion
 
 #pragma region Frame Render
 // Draws the scene.
-void Sample::Render()
+void Wheel::Render()
 {
     // Don't try to render anything before the first Update.
     if (m_timer.GetFrameCount() == 0)
@@ -638,33 +308,7 @@ void Sample::Render()
         // Draw description
         m_font->DrawString(m_spriteBatch.get(), c_InputTestNames[m_currentMode], pos, ATG::Colors::White);
         pos.y += m_font->GetLineSpacing() * 1.5f;
-        
-        switch (m_currentMode)
-        {
-        case 0:
-            m_font->DrawString(m_spriteBatch.get(), c_NavDescription, pos, ATG::Colors::OffWhite);
-            pos.y += (m_font->GetLineSpacing() * 1.5f) * 2.f;
-
-            if (!m_buttonString.empty())
-            {
-                m_font->DrawString(m_spriteBatch.get(), m_buttonString.c_str(), pos, ATG::Colors::Green);
-            }
-            break;
-        case 1:
-            if (m_currentStick != nullptr)
-            {
-                if (!m_buttonString.empty())
-                {
-                    m_font->DrawString(m_spriteBatch.get(), m_buttonString.c_str(), pos, ATG::Colors::Green);
-                }
-            }
-            else
-            {
-                m_font->DrawString(m_spriteBatch.get(), L"No arcade stick connected", pos, ATG::Colors::Orange);
-            }
-            break;
-        case 2:
-            if (m_currentWheel != nullptr)
+        if (m_currentWheel != nullptr)
             {
                 DrawWheel(pos);
             }
@@ -672,18 +316,7 @@ void Sample::Render()
             {
                 m_font->DrawString(m_spriteBatch.get(), L"No wheel connected", pos, ATG::Colors::Orange);
             }
-            break;
-		case 3:
-			if (m_currentFlightStick != nullptr)
-			{
-				DrawFlightStick(pos);
-			}
-			else
-			{
-				m_font->DrawString(m_spriteBatch.get(), L"No flight stick connected", pos, ATG::Colors::Orange);
-			}
-			break;
-		}
+            
     }
     else
     {
@@ -692,7 +325,7 @@ void Sample::Render()
 
     m_spriteBatch->End();
 
-    PIXEndEvent(context);
+    //PIXEndEvent(context);
 
     // Show the new frame.
     PIXBeginEvent(PIX_COLOR_DEFAULT, L"Present");
@@ -701,7 +334,7 @@ void Sample::Render()
 }
 
 // Helper method to clear the back buffers.
-void Sample::Clear()
+void Wheel::Clear()
 {
     auto context = m_deviceResources->GetD3DDeviceContext();
     PIXBeginEvent(context, PIX_COLOR_DEFAULT, L"Clear");
@@ -725,15 +358,15 @@ void Sample::Clear()
 
 #pragma region Message Handlers
 // Message handlers
-void Sample::OnActivated()
+void Wheel::OnActivated()
 {
 }
 
-void Sample::OnDeactivated()
+void Wheel::OnDeactivated()
 {
 }
 
-void Sample::OnSuspending()
+void Wheel::OnSuspending()
 {
     auto context = m_deviceResources->GetD3DDeviceContext();
     context->ClearState();
@@ -741,12 +374,12 @@ void Sample::OnSuspending()
     m_deviceResources->Trim();
 }
 
-void Sample::OnResuming()
+void Wheel::OnResuming()
 {
     m_timer.ResetElapsedTime();
 }
 
-void Sample::OnWindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation)
+void Wheel::OnWindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation)
 {
     if (!m_deviceResources->WindowSizeChanged(width, height, rotation))
         return;
@@ -754,13 +387,13 @@ void Sample::OnWindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotat
     CreateWindowSizeDependentResources();
 }
 
-void Sample::ValidateDevice()
+void Wheel::ValidateDevice()
 {
     m_deviceResources->ValidateDevice();
 }
 
 // Properties
-void Sample::GetDefaultSize(int& width, int& height) const
+void Wheel::GetDefaultSize(int& width, int& height) const
 {
     width = 1280;
     height = 720;
@@ -769,7 +402,7 @@ void Sample::GetDefaultSize(int& width, int& height) const
 
 #pragma region Direct3D Resources
 // These are the resources that depend on the device.
-void Sample::CreateDeviceDependentResources()
+void Wheel::CreateDeviceDependentResources()
 {
     auto context = m_deviceResources->GetD3DDeviceContext();
     auto device = m_deviceResources->GetD3DDevice();
@@ -780,17 +413,17 @@ void Sample::CreateDeviceDependentResources()
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.
-void Sample::CreateWindowSizeDependentResources()
+void Wheel::CreateWindowSizeDependentResources()
 {
 }
 
-void Sample::OnDeviceLost()
+void Wheel::OnDeviceLost()
 {
     m_spriteBatch.reset();
     m_font.reset();
 }
 
-void Sample::OnDeviceRestored()
+void Wheel::OnDeviceRestored()
 {
     CreateDeviceDependentResources();
 

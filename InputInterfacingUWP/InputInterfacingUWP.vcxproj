@@ -318,27 +318,6 @@
     <Image Include="Assets\WideLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Kits\Telemetry\ARM\ATGTelemetryUWP.dll">
-      <ExcludedFromBuild Condition="'$(Platform)'=='x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Platform)'=='Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Platform)'=='ARM64'">true</ExcludedFromBuild>
-      <DeploymentContent Condition="'$(Platform)'=='ARM'">true</DeploymentContent>
-      <Link>ATGTelemetryUWP.dll</Link>
-    </None>
-    <None Include="..\Kits\Telemetry\ARM64\ATGTelemetryUWP.dll">
-      <ExcludedFromBuild Condition="'$(Platform)'=='x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Platform)'=='Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Platform)'=='ARM'">true</ExcludedFromBuild>
-      <DeploymentContent Condition="'$(Platform)'=='ARM64'">true</DeploymentContent>
-      <Link>ATGTelemetryUWP.dll</Link>
-    </None>
-    <None Include="..\Kits\Telemetry\Win32\ATGTelemetryUWP.dll">
-      <ExcludedFromBuild Condition="'$(Platform)'=='x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Platform)'=='ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Platform)'=='ARM64'">true</ExcludedFromBuild>
-      <DeploymentContent Condition="'$(Platform)'=='Win32'">true</DeploymentContent>
-      <Link>ATGTelemetryUWP.dll</Link>
-    </None>
     <None Include="..\Kits\Telemetry\x64\ATGTelemetryUWP.dll">
       <ExcludedFromBuild Condition="'$(Platform)'=='ARM'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Platform)'=='ARM64'">true</ExcludedFromBuild>

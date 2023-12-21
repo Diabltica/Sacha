@@ -21,18 +21,18 @@ enum Modes
 
 // A basic sample implementation that creates a D3D11 device and
 // provides a render loop.
-class Sample final : public DX::IDeviceNotify
+class Wheel final : public DX::IDeviceNotify
 {
 public:
 
-    Sample() noexcept(false);
-    ~Sample() = default;
+    Wheel() noexcept(false);
+    ~Wheel() = default;
 
-    Sample(Sample&&) = default;
-    Sample& operator= (Sample&&) = default;
+    Wheel(Wheel&&) = default;
+    Wheel& operator= (Wheel&&) = default;
 
-    Sample(Sample const&) = delete;
-    Sample& operator= (Sample const&) = delete;
+    Wheel(Wheel const&) = delete;
+    Wheel& operator= (Wheel const&) = delete;
 
     // Initialization and management
     void Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation);
@@ -56,15 +56,10 @@ public:
     void GetDefaultSize( int& width, int& height ) const;
 
 private:
-    void GenerateNavString();
-    void GenerateStickString();
-	void DrawFlightStick(DirectX::XMFLOAT2 startPosition);
 	void DrawWheel(DirectX::XMFLOAT2 startPosition);
 
     void UpdateNavController();
-    void UpdateArcadeStick();
     void UpdateWheel();
-    void UpdateFlightStick();
 
     void Update(DX::StepTimer const& timer);
     void Render();
@@ -84,19 +79,13 @@ private:
     //Input
     Windows::Gaming::Input::UINavigationController^     m_currentNav;
     Windows::Gaming::Input::UINavigationReading         m_navReading;
-    Windows::Gaming::Input::ArcadeStick^                m_currentStick;
-    Windows::Gaming::Input::ArcadeStickReading          m_arcadeReading;
     Windows::Gaming::Input::RacingWheel^                m_currentWheel;
     Windows::Gaming::Input::RacingWheelReading          m_wheelReading;
     Windows::Gaming::Input::RacingWheelButtons          m_buttonReading;
     Windows::Gaming::Input::ForceFeedback::ConstantForceEffect^ m_effect;
-	Windows::Gaming::Input::FlightStick^				m_currentFlightStick;
-	Windows::Gaming::Input::FlightStickReading			m_flightStickReading;
 
     Platform::Collections::Vector<Windows::Gaming::Input::UINavigationController^>^ m_navCollection;
-    Platform::Collections::Vector<Windows::Gaming::Input::ArcadeStick^>^ m_stickCollection;
     Platform::Collections::Vector<Windows::Gaming::Input::RacingWheel^>^ m_wheelCollection;
-	Platform::Collections::Vector<Windows::Gaming::Input::FlightStick^>^ m_flightStickCollection;
 
     bool                                                m_effectLoaded;
     Modes                   m_currentMode;
