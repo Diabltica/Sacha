@@ -46,7 +46,7 @@
     dcl_2d s0
     dcl_2d s1
 
-#line 121 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\EnvironmentMapEffect.fx"
+#line 121 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\EnvironmentMapEffect.fx"
     add r0.xyz, -t1, c10
     nrm r1.xyz, r0  // ::eyeVector<0,1,2>
     nrm r0.xyz, t2  // ::worldNormal<0,1,2>
@@ -70,7 +70,7 @@
 #line 119
     texld r2, t0, s0
 
-#line 33 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 33 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     dp3 r3.x, -c4, r0  // ::dotL<0>
     dp3 r3.y, -c5, r0  // ::dotL<1>
     dp3 r3.z, -c6, r0  // ::dotL<2>
@@ -86,7 +86,7 @@
     mov r3.xyz, c2  // Parameters::DiffuseColor<0,1,2>
     mad r0.xyz, r0, r3, c3  // ::result<0,1,2>
 
-#line 119 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\EnvironmentMapEffect.fx"
+#line 119 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\EnvironmentMapEffect.fx"
     mul r2, r2, t3  // ::color<0,1,2,3>
 
 #line 126
@@ -158,10 +158,10 @@ ret
 
 const BYTE EnvironmentMapEffect_PSEnvMapSpherePixelLightingNoFog[] =
 {
-     68,  88,  66,  67,  41, 245, 
-    119, 242, 244,  58,  73, 111, 
-     51, 186, 249,  14,  47, 214, 
-      3, 110,   1,   0,   0,   0, 
+     68,  88,  66,  67, 111, 226, 
+    180, 138,  77, 255, 244, 132, 
+    175, 169,  74, 178, 114, 190, 
+     31, 113,   1,   0,   0,   0, 
      12,  15,   0,   0,   4,   0, 
       0,   0,  48,   0,   0,   0, 
      40,   9,   0,   0,  88,  14, 
@@ -192,31 +192,31 @@ const BYTE EnvironmentMapEffect_PSEnvMapSpherePixelLightingNoFog[] =
     116, 115,  92,  99,  97, 114, 
      97, 112, 117,  99, 101,  45, 
      99, 111, 110, 116, 114, 111, 
-    108, 101, 114,  92,  75, 105, 
-    116, 115,  92,  68, 105, 114, 
-    101,  99, 116,  88,  84,  75, 
-     92,  83, 114,  99,  92,  83, 
-    104,  97, 100, 101, 114, 115, 
-     92,  69, 110, 118, 105, 114, 
-    111, 110, 109, 101, 110, 116, 
-     77,  97, 112,  69, 102, 102, 
-    101,  99, 116,  46, 102, 120, 
-      0,  67,  58,  92,  85, 115, 
-    101, 114, 115,  92, 116, 104, 
-    111, 109,  97,  92,  68, 111, 
-     99, 117, 109, 101, 110, 116, 
-    115,  92,  99,  97, 114,  97, 
-    112, 117,  99, 101,  45,  99, 
-    111, 110, 116, 114, 111, 108, 
-    101, 114,  92,  75, 105, 116, 
-    115,  92,  68, 105, 114, 101, 
+    108, 101, 114,  92, 108, 105, 
+     98,  92,  68, 105, 114, 101, 
      99, 116,  88,  84,  75,  92, 
      83, 114,  99,  92,  83, 104, 
      97, 100, 101, 114, 115,  92, 
-     76, 105, 103, 104, 116, 105, 
-    110, 103,  46, 102, 120, 104, 
-      0, 171,  40,   0,   0,   0, 
-    135,   0,   0,   0,   0,   0, 
+     69, 110, 118, 105, 114, 111, 
+    110, 109, 101, 110, 116,  77, 
+     97, 112,  69, 102, 102, 101, 
+     99, 116,  46, 102, 120,   0, 
+     67,  58,  92,  85, 115, 101, 
+    114, 115,  92, 116, 104, 111, 
+    109,  97,  92,  68, 111,  99, 
+    117, 109, 101, 110, 116, 115, 
+     92,  99,  97, 114,  97, 112, 
+    117,  99, 101,  45,  99, 111, 
+    110, 116, 114, 111, 108, 101, 
+    114,  92, 108, 105,  98,  92, 
+     68, 105, 114, 101,  99, 116, 
+     88,  84,  75,  92,  83, 114, 
+     99,  92,  83, 104,  97, 100, 
+    101, 114, 115,  92,  76, 105, 
+    103, 104, 116, 105, 110, 103, 
+     46, 102, 120, 104,   0, 171, 
+    171, 171,  40,   0,   0,   0, 
+    134,   0,   0,   0,   0,   0, 
     255, 255,  16,   6,   0,   0, 
       0,   0, 255, 255,  40,   6, 
       0,   0,   0,   0, 255, 255, 

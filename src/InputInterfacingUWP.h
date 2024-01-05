@@ -34,6 +34,15 @@ public:
     Wheel(Wheel const&) = delete;
     Wheel& operator= (Wheel const&) = delete;
 
+    struct wheelData {
+        double angle;
+        double throttle;
+        double brake;
+        int gear;
+        int x;
+        int y;
+    };
+
     // Initialization and management
     void Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATION rotation);
 
@@ -54,6 +63,7 @@ public:
 
     // Properties
     void GetDefaultSize( int& width, int& height ) const;
+    wheelData getData();
 
 private:
 	void DrawWheel(DirectX::XMFLOAT2 startPosition);
@@ -92,6 +102,8 @@ private:
     bool                    m_selectPressed;
     bool                    m_connected;
     std::wstring            m_buttonString;
+    int                     m_x;
+    int                     m_y;
 
     // Rendering loop timer.
     DX::StepTimer                           m_timer;

@@ -9,8 +9,11 @@
 
 #include "pch.h"
 #include "InputInterfacingUWP.h"
+#include "CommunicationManager.h"
 
 #include <ppltasks.h>
+#include <thread>
+#include <iostream>
 
 using namespace concurrency;
 using namespace Windows::ApplicationModel;
@@ -52,11 +55,34 @@ public:
             ref new EventHandler<Platform::Object^>(this, &ViewProvider::OnResuming);
 
         m_steeringWheel = std::make_unique<Wheel>();
+        m_com = std::make_unique<CommunicationManager>();
+        m_com->createConnection("ws://localhost:8765");
+        m_com->startThread();
+        //m_thread = std::thread(CommunicationManager::run, &m_com);
+    }
+
+    virtual void Run()
+    {
+        
+        while (!m_exit)
+        {
+            if (m_visible)
+            {
+                m_steeringWheel->Tick();
+                CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
+                m_com->updateData(m_steeringWheel->getData());
+            }
+            else
+            {
+                CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessOneAndAllPending);
+            }
+        }
     }
 
     virtual void Uninitialize()
     {
         m_steeringWheel.reset();
+        m_com->stopThread();
     }
 
     virtual void SetWindow(CoreWindow^ window)
@@ -120,27 +146,11 @@ public:
         }
 
         m_steeringWheel->Initialize(reinterpret_cast<IUnknown*>(window),
-                           outputWidth, outputHeight, rotation );
+            outputWidth, outputHeight, rotation);
     }
 
     virtual void Load(Platform::String^ entryPoint)
     {
-    }
-
-    virtual void Run()
-    {
-        while (!m_exit)
-        {
-            if (m_visible)
-            {
-                m_steeringWheel->Tick();
-                CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
-            }
-            else
-            {
-                CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessOneAndAllPending);
-            }
-        }
     }
 
 protected:
@@ -159,7 +169,8 @@ protected:
             }
         }
 
-        int w, h;
+        int w = 1280;
+        int h = 720;
         m_steeringWheel->GetDefaultSize(w, h);
 
         m_DPI = DisplayInformation::GetForCurrentView()->LogicalDpi;
@@ -285,13 +296,15 @@ protected:
     }
 
 private:
-    bool                    m_exit;
-    bool                    m_visible;
-    bool                    m_in_sizemove;
-    float                   m_DPI;
-    float                   m_logicalWidth;
-    float                   m_logicalHeight;
-    std::unique_ptr<Wheel> m_steeringWheel;
+    bool                                     m_exit;
+    bool                                     m_visible;
+    bool                                     m_in_sizemove;
+    float                                    m_DPI;
+    float                                    m_logicalWidth;
+    float                                    m_logicalHeight;
+    std::unique_ptr<Wheel>                   m_steeringWheel;
+    std::unique_ptr<CommunicationManager>    m_com;
+    std::thread                              m_thread;
 
     Windows::Graphics::Display::DisplayOrientations	m_nativeOrientation;
     Windows::Graphics::Display::DisplayOrientations	m_currentOrientation;

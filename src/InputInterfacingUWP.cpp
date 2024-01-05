@@ -22,6 +22,9 @@ using namespace Platform::Collections;
 
 using Microsoft::WRL::ComPtr;
 int currentGear;
+boolean previousStateP = false;
+boolean previousStateM = false;
+
 namespace
 {
     static const wchar_t* c_InputTestNames[] =
@@ -41,16 +44,16 @@ namespace
 void Wheel::DrawWheel(XMFLOAT2 startPosition)
 {
     wchar_t wheelString[128] = {};
-
-    swprintf_s(wheelString, L"Wheel %1.3f", m_wheelReading.Wheel);
+    double percentages[7] = { 0.05, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0 };
+    swprintf_s(wheelString, L"Wheel %1.3f", m_wheelReading.Wheel * (2.0/0.34));
     m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
     startPosition.y += m_font->GetLineSpacing() * 1.1f;
 
-    swprintf_s(wheelString, L"Throttle %1.3f", m_wheelReading.Throttle);
+    swprintf_s(wheelString, L"Throttle %1.3f", m_wheelReading.Throttle * (2- percentages[currentGear - 1]));
     m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
     startPosition.y += m_font->GetLineSpacing() * 1.1f;
 
-    swprintf_s(wheelString, L"Break %1.3f", m_wheelReading.Brake);
+    swprintf_s(wheelString, L"Break %1.3f", m_wheelReading.Brake * (2 - percentages[currentGear - 1]));
     m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
     startPosition.y += m_font->GetLineSpacing() * 1.1f;
 
@@ -70,16 +73,93 @@ void Wheel::DrawWheel(XMFLOAT2 startPosition)
     
     if (m_currentWheel->HasPatternShifter)
     {
-        if (m_buttonReading == RacingWheelButtons::NextGear && currentGear < m_currentWheel->MaxPatternShifterGear) {
+        if (m_buttonReading == RacingWheelButtons::NextGear && currentGear < m_currentWheel->MaxPatternShifterGear && !previousStateP) {
             currentGear++;
         }
-        else if (m_buttonReading == RacingWheelButtons::PreviousGear && currentGear > 0) {
+        else if (m_buttonReading == RacingWheelButtons::PreviousGear && currentGear > 1 && !previousStateM) {
             currentGear--;
         }
+        previousStateP = m_buttonReading == RacingWheelButtons::NextGear;
+        previousStateM = m_buttonReading == RacingWheelButtons::PreviousGear;
+
         swprintf_s(wheelString, L"Shifter %d of %d", currentGear, m_currentWheel->MaxPatternShifterGear);
         m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
         startPosition.y += m_font->GetLineSpacing() * 1.1f;
     }
+    int _modifier = 1;
+    switch (m_buttonReading)
+    {
+    case Windows::Gaming::Input::RacingWheelButtons::None:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::PreviousGear:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::NextGear:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::DPadUp:
+        if (m_x + _modifier <= 255)
+            m_x += _modifier;
+        else
+            m_x = 255;
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::DPadDown:
+        if (m_x - _modifier >= 0)
+            m_x -= _modifier;
+        else
+            m_x = 0;
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::DPadLeft:
+        if (m_y - _modifier >= 0)
+            m_y -= _modifier;
+        else
+            m_y = 0;
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::DPadRight:
+        if (m_y + _modifier <= 255)
+            m_y += _modifier;
+        else
+            m_y = 255;
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button1:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button2:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button3:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button4:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button5:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button6:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button7:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button8:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button9:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button10:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button11:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button12:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button13:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button14:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button15:
+        break;
+    case Windows::Gaming::Input::RacingWheelButtons::Button16:
+        break;
+    default:
+        break;
+    }
+    swprintf_s(wheelString, L"Position X %d", m_x);
+    m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
+    startPosition.y += m_font->GetLineSpacing() * 1.1f;
+    swprintf_s(wheelString, L"Position Y %d", m_y);
+    m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
+    startPosition.y += m_font->GetLineSpacing() * 1.1f;
 }
 
 void Wheel::UpdateNavController()
@@ -110,7 +190,7 @@ void Wheel::UpdateWheel()
     {
         m_currentWheel = mostRecentWheel;
         if (m_currentWheel->HasPatternShifter) {
-            currentGear = m_currentWheel->MaxPatternShifterGear;
+            currentGear = 1;
         }
     }
 
@@ -170,7 +250,8 @@ void Wheel::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATI
     m_selectPressed = false;
     m_connected = false;
     m_effectLoaded = false;
-
+    m_x = 127;
+    m_y = 127;
     //Create an effect
     m_effect = ref new ForceFeedback::ConstantForceEffect();
     TimeSpan time;
@@ -428,5 +509,16 @@ void Wheel::OnDeviceRestored()
     CreateDeviceDependentResources();
 
     CreateWindowSizeDependentResources();
+}
+
+Wheel::wheelData Wheel::getData() {
+    return {
+        m_wheelReading.Wheel,
+        m_wheelReading.Throttle,
+        m_wheelReading.Brake,
+        currentGear,
+        m_x,
+        m_y
+    };
 }
 #pragma endregion

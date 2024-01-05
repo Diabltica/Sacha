@@ -49,7 +49,7 @@
     dcl_texcoord2 v2  // vin<7,8>
     dcl_texcoord3 v3  // vin<9,10,11,12>
 
-#line 82 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 82 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     dp4 oPos.z, v0, c11  // ::VSBasicPixelLightingTxVc<15>
     dp4 oT1.x, v0, c3  // ::VSBasicPixelLightingTxVc<2>
     dp4 oT1.y, v0, c4  // ::VSBasicPixelLightingTxVc<3>
@@ -61,20 +61,20 @@
     rsq r0.w, r0.w
     mul oT2.xyz, r0.w, r0  // ::VSBasicPixelLightingTxVc<6,7,8>
 
-#line 11 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 11 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     dp4 r0.x, v0, c2
     max r0.x, r0.x, c13.x
     min oT1.w, r0.x, c13.y  // ::VSBasicPixelLightingTxVc<5>
 
-#line 466 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 466 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mul oT3.w, v3.w, c1.w  // ::VSBasicPixelLightingTxVc<12>
 
-#line 82 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 82 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     dp4 r0.x, v0, c9  // ::vout<0>
     dp4 r0.y, v0, c10  // ::vout<1>
     dp4 r0.z, v0, c12  // ::vout<3>
 
-#line 458 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 458 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mad oPos.xy, r0.z, c0, r0  // ::VSBasicPixelLightingTxVc<13,14>
     mov oPos.w, r0.z  // ::VSBasicPixelLightingTxVc<16>
 
@@ -118,10 +118,10 @@ ret
 
 const BYTE BasicEffect_VSBasicPixelLightingTxVc[] =
 {
-     68,  88,  66,  67,  69, 171, 
-    231, 189, 174,  38,   0, 237, 
-     89, 226, 212,   9, 154, 169, 
-    134, 175,   1,   0,   0,   0, 
+     68,  88,  66,  67,  12, 160, 
+      9, 118, 207, 211,  92, 247, 
+    209,  10, 111, 255,  86, 249, 
+    173, 224,   1,   0,   0,   0, 
     144,  10,   0,   0,   4,   0, 
       0,   0,  48,   0,   0,   0, 
     200,   6,   0,   0,  88,   9, 
@@ -156,43 +156,43 @@ const BYTE BasicEffect_VSBasicPixelLightingTxVc[] =
      97, 114,  97, 112, 117,  99, 
     101,  45,  99, 111, 110, 116, 
     114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  76, 105, 103, 
-    104, 116, 105, 110, 103,  46, 
-    102, 120, 104,   0,  67,  58, 
-     92,  85, 115, 101, 114, 115, 
-     92, 116, 104, 111, 109,  97, 
-     92,  68, 111,  99, 117, 109, 
-    101, 110, 116, 115,  92,  99, 
-     97, 114,  97, 112, 117,  99, 
-    101,  45,  99, 111, 110, 116, 
-    114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  67, 111, 109, 
-    109, 111, 110,  46, 102, 120, 
-    104,   0,  67,  58,  92,  85, 
-    115, 101, 114, 115,  92, 116, 
-    104, 111, 109,  97,  92,  68, 
-    111,  99, 117, 109, 101, 110, 
-    116, 115,  92,  99,  97, 114, 
-     97, 112, 117,  99, 101,  45, 
-     99, 111, 110, 116, 114, 111, 
-    108, 101, 114,  92,  75, 105, 
-    116, 115,  92,  68, 105, 114, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  76, 105, 103, 104, 
+    116, 105, 110, 103,  46, 102, 
+    120, 104,   0,  67,  58,  92, 
+     85, 115, 101, 114, 115,  92, 
+    116, 104, 111, 109,  97,  92, 
+     68, 111,  99, 117, 109, 101, 
+    110, 116, 115,  92,  99,  97, 
+    114,  97, 112, 117,  99, 101, 
+     45,  99, 111, 110, 116, 114, 
+    111, 108, 101, 114,  92, 108, 
+    105,  98,  92,  68, 105, 114, 
     101,  99, 116,  88,  84,  75, 
      92,  83, 114,  99,  92,  83, 
     104,  97, 100, 101, 114, 115, 
-     92,  66,  97, 115, 105,  99, 
-     69, 102, 102, 101,  99, 116, 
-     46, 102, 120,   0,  40,   0, 
-      0,   0, 124,   0,   0,   0, 
-    206,   0,   0,   0,   0,   0, 
+     92,  67, 111, 109, 109, 111, 
+    110,  46, 102, 120, 104,   0, 
+     67,  58,  92,  85, 115, 101, 
+    114, 115,  92, 116, 104, 111, 
+    109,  97,  92,  68, 111,  99, 
+    117, 109, 101, 110, 116, 115, 
+     92,  99,  97, 114,  97, 112, 
+    117,  99, 101,  45,  99, 111, 
+    110, 116, 114, 111, 108, 101, 
+    114,  92, 108, 105,  98,  92, 
+     68, 105, 114, 101,  99, 116, 
+     88,  84,  75,  92,  83, 114, 
+     99,  92,  83, 104,  97, 100, 
+    101, 114, 115,  92,  66,  97, 
+    115, 105,  99,  69, 102, 102, 
+    101,  99, 116,  46, 102, 120, 
+      0, 171, 171, 171,  40,   0, 
+      0,   0, 123,   0,   0,   0, 
+    204,   0,   0,   0,   0,   0, 
     255, 255, 180,   4,   0,   0, 
       0,   0, 255, 255, 204,   4, 
       0,   0,   0,   0, 255, 255, 

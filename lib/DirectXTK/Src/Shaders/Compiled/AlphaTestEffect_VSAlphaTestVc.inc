@@ -45,7 +45,7 @@
     dcl_texcoord1 v1  // vin<4,5>
     dcl_texcoord2 v2  // vin<6,7,8,9>
 
-#line 40 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 40 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     dp4 oPos.z, v0, c5  // ::VSAlphaTestVc<12>
 
 #line 11
@@ -53,22 +53,22 @@
     max r0.x, r0.x, c7.x
     min oT1.w, r0.x, c7.y  // ::VSAlphaTestVc<7>
 
-#line 62 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
+#line 62 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
     mul oT0, v2, c1  // ::VSAlphaTestVc<0,1,2,3>
 
-#line 40 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 40 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     dp4 r0.x, v0, c3  // ::vout<0>
     dp4 r0.y, v0, c4  // ::vout<1>
     dp4 r0.z, v0, c6  // ::vout<3>
 
-#line 54 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
+#line 54 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
     mad oPos.xy, r0.z, c0, r0  // ::VSAlphaTestVc<10,11>
     mov oPos.w, r0.z  // ::VSAlphaTestVc<13>
 
-#line 42 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 42 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     mov oT1.xyz, c7.x  // ::VSAlphaTestVc<4,5,6>
 
-#line 61 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
+#line 61 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
     mov oT2.xy, v1  // ::VSAlphaTestVc<8,9>
 
 // approximately 12 instruction slots used
@@ -95,10 +95,10 @@ ret
 
 const BYTE AlphaTestEffect_VSAlphaTestVc[] =
 {
-     68,  88,  66,  67, 201,  14, 
-    132,  22, 191,  19, 121, 179, 
-      5, 236,  57, 169, 153, 204, 
-    150, 155,   1,   0,   0,   0, 
+     68,  88,  66,  67, 168,  43, 
+      1, 187, 151, 135, 144, 168, 
+      2,  60, 171, 100,  35, 177, 
+    100,   2,   1,   0,   0,   0, 
     116,   7,   0,   0,   4,   0, 
       0,   0,  48,   0,   0,   0, 
       4,   5,   0,   0, 116,   6, 
@@ -131,29 +131,29 @@ const BYTE AlphaTestEffect_VSAlphaTestVc[] =
      97, 114,  97, 112, 117,  99, 
     101,  45,  99, 111, 110, 116, 
     114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  67, 111, 109, 
-    109, 111, 110,  46, 102, 120, 
-    104,   0,  67,  58,  92,  85, 
-    115, 101, 114, 115,  92, 116, 
-    104, 111, 109,  97,  92,  68, 
-    111,  99, 117, 109, 101, 110, 
-    116, 115,  92,  99,  97, 114, 
-     97, 112, 117,  99, 101,  45, 
-     99, 111, 110, 116, 114, 111, 
-    108, 101, 114,  92,  75, 105, 
-    116, 115,  92,  68, 105, 114, 
-    101,  99, 116,  88,  84,  75, 
-     92,  83, 114,  99,  92,  83, 
-    104,  97, 100, 101, 114, 115, 
-     92,  65, 108, 112, 104,  97, 
-     84, 101, 115, 116,  69, 102, 
-    102, 101,  99, 116,  46, 102, 
-    120,   0,  40,   0,   0,   0, 
-    122,   0,   0,   0,   0,   0, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  67, 111, 109, 109, 
+    111, 110,  46, 102, 120, 104, 
+      0,  67,  58,  92,  85, 115, 
+    101, 114, 115,  92, 116, 104, 
+    111, 109,  97,  92,  68, 111, 
+     99, 117, 109, 101, 110, 116, 
+    115,  92,  99,  97, 114,  97, 
+    112, 117,  99, 101,  45,  99, 
+    111, 110, 116, 114, 111, 108, 
+    101, 114,  92, 108, 105,  98, 
+     92,  68, 105, 114, 101,  99, 
+    116,  88,  84,  75,  92,  83, 
+    114,  99,  92,  83, 104,  97, 
+    100, 101, 114, 115,  92,  65, 
+    108, 112, 104,  97,  84, 101, 
+    115, 116,  69, 102, 102, 101, 
+     99, 116,  46, 102, 120,   0, 
+    171, 171,  40,   0,   0,   0, 
+    121,   0,   0,   0,   0,   0, 
     255, 255, 148,   3,   0,   0, 
       0,   0, 255, 255, 172,   3, 
       0,   0,   0,   0, 255, 255, 

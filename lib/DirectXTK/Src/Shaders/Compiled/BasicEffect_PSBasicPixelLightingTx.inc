@@ -44,20 +44,20 @@
     dcl t3  // pin<9,10,11,12>
     dcl_2d s0
 
-#line 593 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 593 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     texld r0, t0, s0
     add r1.xyz, -t1, c12
     dp3 r1.w, r1, r1
     rsq r1.w, r1.w
 
-#line 30 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 30 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     mad r2.xyz, r1, r1.w, -c3
     nrm r3.xyz, r2  // ::halfVectors<0,1,2>
 
-#line 596 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 596 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     nrm r2.xyz, t2  // ::worldNormal<0,1,2>
 
-#line 34 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 34 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     dp3 r3.x, r3, r2  // ::dotH<0>
 
 #line 30
@@ -99,20 +99,20 @@
     mad r1.xyz, r1.z, c11, r3
     mul r1.xyz, r1, c2  // ::result<3,4,5>
 
-#line 593 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 593 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mul r0, r0, t3  // ::color<0,1,2,3>
 
-#line 23 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 23 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     mul r1.xyz, r0.w, r1
 
-#line 43 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 43 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     mul r3.xyz, r2.y, c7
     mad r3.xyz, r2.x, c6, r3
     mad r2.xyz, r2.z, c8, r3
     mov r3.xyz, c0  // Parameters::DiffuseColor<0,1,2>
     mad r2.xyz, r2, r3, c1  // ::result<0,1,2>
 
-#line 23 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 23 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     mad r1.xyz, r0, r2, r1  // AddSpecular::color<0,1,2>
 
 #line 17
@@ -185,10 +185,10 @@ ret
 
 const BYTE BasicEffect_PSBasicPixelLightingTx[] =
 {
-     68,  88,  66,  67,  19, 136, 
-     88,  41, 140, 203, 166, 154, 
-     28, 230,  17,   9, 203, 164, 
-    231,   0,   1,   0,   0,   0, 
+     68,  88,  66,  67,  23, 139, 
+     87, 199, 166,  12, 201, 126, 
+    214,  88, 108,  50, 210,  32, 
+     82, 209,   1,   0,   0,   0, 
      80,  17,   0,   0,   4,   0, 
       0,   0,  48,   0,   0,   0, 
      44,  10,   0,   0, 156,  16, 
@@ -219,43 +219,43 @@ const BYTE BasicEffect_PSBasicPixelLightingTx[] =
      97, 114,  97, 112, 117,  99, 
     101,  45,  99, 111, 110, 116, 
     114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  66,  97, 115, 105, 
+     99,  69, 102, 102, 101,  99, 
+    116,  46, 102, 120,   0,  67, 
+     58,  92,  85, 115, 101, 114, 
+    115,  92, 116, 104, 111, 109, 
+     97,  92,  68, 111,  99, 117, 
+    109, 101, 110, 116, 115,  92, 
+     99,  97, 114,  97, 112, 117, 
+     99, 101,  45,  99, 111, 110, 
+    116, 114, 111, 108, 101, 114, 
+     92, 108, 105,  98,  92,  68, 
     105, 114, 101,  99, 116,  88, 
      84,  75,  92,  83, 114,  99, 
      92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  66,  97, 115, 
-    105,  99,  69, 102, 102, 101, 
-     99, 116,  46, 102, 120,   0, 
-     67,  58,  92,  85, 115, 101, 
-    114, 115,  92, 116, 104, 111, 
-    109,  97,  92,  68, 111,  99, 
-    117, 109, 101, 110, 116, 115, 
-     92,  99,  97, 114,  97, 112, 
-    117,  99, 101,  45,  99, 111, 
-    110, 116, 114, 111, 108, 101, 
-    114,  92,  75, 105, 116, 115, 
-     92,  68, 105, 114, 101,  99, 
-    116,  88,  84,  75,  92,  83, 
-    114,  99,  92,  83, 104,  97, 
-    100, 101, 114, 115,  92,  76, 
-    105, 103, 104, 116, 105, 110, 
-    103,  46, 102, 120, 104,   0, 
-     67,  58,  92,  85, 115, 101, 
-    114, 115,  92, 116, 104, 111, 
-    109,  97,  92,  68, 111,  99, 
-    117, 109, 101, 110, 116, 115, 
-     92,  99,  97, 114,  97, 112, 
-    117,  99, 101,  45,  99, 111, 
-    110, 116, 114, 111, 108, 101, 
-    114,  92,  75, 105, 116, 115, 
-     92,  68, 105, 114, 101,  99, 
-    116,  88,  84,  75,  92,  83, 
-    114,  99,  92,  83, 104,  97, 
-    100, 101, 114, 115,  92,  67, 
-    111, 109, 109, 111, 110,  46, 
-    102, 120, 104,   0,  40,   0, 
-      0,   0, 126,   0,   0,   0, 
-    210,   0,   0,   0,   0,   0, 
+    114, 115,  92,  76, 105, 103, 
+    104, 116, 105, 110, 103,  46, 
+    102, 120, 104,   0,  67,  58, 
+     92,  85, 115, 101, 114, 115, 
+     92, 116, 104, 111, 109,  97, 
+     92,  68, 111,  99, 117, 109, 
+    101, 110, 116, 115,  92,  99, 
+     97, 114,  97, 112, 117,  99, 
+    101,  45,  99, 111, 110, 116, 
+    114, 111, 108, 101, 114,  92, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  67, 111, 109, 109, 
+    111, 110,  46, 102, 120, 104, 
+      0, 171, 171, 171,  40,   0, 
+      0,   0, 125,   0,   0,   0, 
+    208,   0,   0,   0,   0,   0, 
     255, 255, 168,   6,   0,   0, 
       0,   0, 255, 255, 192,   6, 
       0,   0,   0,   0, 255, 255, 

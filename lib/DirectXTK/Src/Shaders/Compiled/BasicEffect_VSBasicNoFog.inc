@@ -38,17 +38,17 @@
     vs_2_0
     dcl_texcoord v0  // vin<0,1,2,3>
 
-#line 40 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 40 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     dp4 oPos.z, v0, c4  // ::VSBasicNoFog<6>
     dp4 r0.x, v0, c2  // ::vout<0>
     dp4 r0.y, v0, c3  // ::vout<1>
     dp4 r0.z, v0, c5  // ::vout<3>
 
-#line 52 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 52 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mad oPos.xy, r0.z, c0, r0  // ::VSBasicNoFog<4,5>
     mov oPos.w, r0.z  // ::VSBasicNoFog<7>
 
-#line 41 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 41 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     mov oT0, c1  // ::VSBasicNoFog<0,1,2,3>
 
 // approximately 7 instruction slots used
@@ -68,10 +68,10 @@ ret
 
 const BYTE BasicEffect_VSBasicNoFog[] =
 {
-     68,  88,  66,  67,  95,  33, 
-    115, 239, 232,  45, 200,  19, 
-     48, 196, 116,  99,  88,  12, 
-    205,   1,   1,   0,   0,   0, 
+     68,  88,  66,  67,  70,  96, 
+     27,  29,   1, 244,  44,  80, 
+     84, 212,  22, 227, 229,   4, 
+    199, 169,   1,   0,   0,   0, 
      56,   5,   0,   0,   4,   0, 
       0,   0,  48,   0,   0,   0, 
     204,   3,   0,   0, 176,   4, 
@@ -104,28 +104,28 @@ const BYTE BasicEffect_VSBasicNoFog[] =
      97, 114,  97, 112, 117,  99, 
     101,  45,  99, 111, 110, 116, 
     114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  67, 111, 109, 
-    109, 111, 110,  46, 102, 120, 
-    104,   0,  67,  58,  92,  85, 
-    115, 101, 114, 115,  92, 116, 
-    104, 111, 109,  97,  92,  68, 
-    111,  99, 117, 109, 101, 110, 
-    116, 115,  92,  99,  97, 114, 
-     97, 112, 117,  99, 101,  45, 
-     99, 111, 110, 116, 114, 111, 
-    108, 101, 114,  92,  75, 105, 
-    116, 115,  92,  68, 105, 114, 
-    101,  99, 116,  88,  84,  75, 
-     92,  83, 114,  99,  92,  83, 
-    104,  97, 100, 101, 114, 115, 
-     92,  66,  97, 115, 105,  99, 
-     69, 102, 102, 101,  99, 116, 
-     46, 102, 120,   0,  40,   0, 
-      0,   0, 122,   0,   0,   0, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  67, 111, 109, 109, 
+    111, 110,  46, 102, 120, 104, 
+      0,  67,  58,  92,  85, 115, 
+    101, 114, 115,  92, 116, 104, 
+    111, 109,  97,  92,  68, 111, 
+     99, 117, 109, 101, 110, 116, 
+    115,  92,  99,  97, 114,  97, 
+    112, 117,  99, 101,  45,  99, 
+    111, 110, 116, 114, 111, 108, 
+    101, 114,  92, 108, 105,  98, 
+     92,  68, 105, 114, 101,  99, 
+    116,  88,  84,  75,  92,  83, 
+    114,  99,  92,  83, 104,  97, 
+    100, 101, 114, 115,  92,  66, 
+     97, 115, 105,  99,  69, 102, 
+    102, 101,  99, 116,  46, 102, 
+    120,   0, 171, 171,  40,   0, 
+      0,   0, 121,   0,   0,   0, 
       0,   0, 255, 255, 216,   2, 
       0,   0,  40,   0,   0,   0, 
     228,   2,   0,   0,  40,   0, 

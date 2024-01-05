@@ -51,7 +51,7 @@
     dcl_texcoord2 v2  // vin<7,8>
     dcl_texcoord3 v3  // vin<9,10,11,12>
 
-#line 54 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 54 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     dp4 r0.x, v0, c9  // ::pos_ws<0>
     dp4 r0.y, v0, c10  // ::pos_ws<1>
     dp4 r0.z, v0, c11  // ::pos_ws<2>
@@ -87,10 +87,10 @@
     mov r2.xyz, c1  // Parameters::DiffuseColor<0,1,2>
     mad r1.xyz, r1, r2, c2  // ::result<0,1,2>
 
-#line 348 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 348 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mul oT0.xyz, r1, v3  // ::VSBasicOneLightTxVc<0,1,2>
 
-#line 39 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 39 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     pow r1.x, r0.x, c3.w
     mul r0.x, r0.y, r1.x  // ::specular<0>
 
@@ -101,20 +101,20 @@
 #line 60
     dp4 oPos.z, v0, c17  // ::VSBasicOneLightTxVc<12>
 
-#line 11 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 11 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     dp4 r0.x, v0, c8
     max r0.x, r0.x, c19.x
     min oT1.w, r0.x, c19.y  // ::VSBasicOneLightTxVc<7>
 
-#line 348 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 348 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mul oT0.w, v3.w, c1.w  // ::VSBasicOneLightTxVc<3>
 
-#line 60 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 60 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     dp4 r0.x, v0, c15  // ::vout<0>
     dp4 r0.y, v0, c16  // ::vout<1>
     dp4 r0.z, v0, c18  // ::vout<3>
 
-#line 340 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 340 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mad oPos.xy, r0.z, c0, r0  // ::VSBasicOneLightTxVc<10,11>
     mov oPos.w, r0.z  // ::VSBasicOneLightTxVc<13>
 
@@ -178,10 +178,10 @@ ret
 
 const BYTE BasicEffect_VSBasicOneLightTxVc[] =
 {
-     68,  88,  66,  67, 250, 170, 
-    164,  42,  78, 207,  54, 243, 
-     75,  22, 166,  94,  99,  84, 
-    243,  51,   1,   0,   0,   0, 
+     68,  88,  66,  67,  54, 174, 
+     93, 163, 131, 202,   0, 152, 
+    184,  72, 176,  45, 201,  51, 
+     71,  19,   1,   0,   0,   0, 
     100,  16,   0,   0,   4,   0, 
       0,   0,  48,   0,   0,   0, 
      48,  10,   0,   0,  68,  15, 
@@ -222,13 +222,27 @@ const BYTE BasicEffect_VSBasicOneLightTxVc[] =
      97, 114,  97, 112, 117,  99, 
     101,  45,  99, 111, 110, 116, 
     114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  76, 105, 103, 
-    104, 116, 105, 110, 103,  46, 
-    102, 120, 104,   0,  67,  58, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  76, 105, 103, 104, 
+    116, 105, 110, 103,  46, 102, 
+    120, 104,   0,  67,  58,  92, 
+     85, 115, 101, 114, 115,  92, 
+    116, 104, 111, 109,  97,  92, 
+     68, 111,  99, 117, 109, 101, 
+    110, 116, 115,  92,  99,  97, 
+    114,  97, 112, 117,  99, 101, 
+     45,  99, 111, 110, 116, 114, 
+    111, 108, 101, 114,  92, 108, 
+    105,  98,  92,  68, 105, 114, 
+    101,  99, 116,  88,  84,  75, 
+     92,  83, 114,  99,  92,  83, 
+    104,  97, 100, 101, 114, 115, 
+     92,  66,  97, 115, 105,  99, 
+     69, 102, 102, 101,  99, 116, 
+     46, 102, 120,   0,  67,  58, 
      92,  85, 115, 101, 114, 115, 
      92, 116, 104, 111, 109,  97, 
      92,  68, 111,  99, 117, 109, 
@@ -236,29 +250,15 @@ const BYTE BasicEffect_VSBasicOneLightTxVc[] =
      97, 114,  97, 112, 117,  99, 
     101,  45,  99, 111, 110, 116, 
     114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  66,  97, 115, 
-    105,  99,  69, 102, 102, 101, 
-     99, 116,  46, 102, 120,   0, 
-     67,  58,  92,  85, 115, 101, 
-    114, 115,  92, 116, 104, 111, 
-    109,  97,  92,  68, 111,  99, 
-    117, 109, 101, 110, 116, 115, 
-     92,  99,  97, 114,  97, 112, 
-    117,  99, 101,  45,  99, 111, 
-    110, 116, 114, 111, 108, 101, 
-    114,  92,  75, 105, 116, 115, 
-     92,  68, 105, 114, 101,  99, 
-    116,  88,  84,  75,  92,  83, 
-    114,  99,  92,  83, 104,  97, 
-    100, 101, 114, 115,  92,  67, 
-    111, 109, 109, 111, 110,  46, 
-    102, 120, 104,   0,  40,   0, 
-      0,   0, 124,   0,   0,   0, 
-    210,   0,   0,   0,   0,   0, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  67, 111, 109, 109, 
+    111, 110,  46, 102, 120, 104, 
+      0, 171, 171, 171,  40,   0, 
+      0,   0, 123,   0,   0,   0, 
+    208,   0,   0,   0,   0,   0, 
     255, 255,  12,   7,   0,   0, 
       0,   0, 255, 255,  36,   7, 
       0,   0,   0,   0, 255, 255, 

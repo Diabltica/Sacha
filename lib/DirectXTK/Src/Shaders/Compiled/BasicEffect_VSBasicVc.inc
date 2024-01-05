@@ -43,7 +43,7 @@
     dcl_texcoord v0  // vin<0,1,2,3>
     dcl_texcoord1 v1  // vin<4,5,6,7>
 
-#line 40 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 40 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     dp4 oPos.z, v0, c5  // ::VSBasicVc<10>
 
 #line 11
@@ -51,19 +51,19 @@
     max r0.x, r0.x, c7.x
     min oT1.w, r0.x, c7.y  // ::VSBasicVc<7>
 
-#line 71 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 71 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mul oT0, v1, c1  // ::VSBasicVc<0,1,2,3>
 
-#line 40 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 40 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     dp4 r0.x, v0, c3  // ::vout<0>
     dp4 r0.y, v0, c4  // ::vout<1>
     dp4 r0.z, v0, c6  // ::vout<3>
 
-#line 64 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 64 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mad oPos.xy, r0.z, c0, r0  // ::VSBasicVc<8,9>
     mov oPos.w, r0.z  // ::VSBasicVc<11>
 
-#line 42 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 42 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     mov oT1.xyz, c7.x  // ::VSBasicVc<4,5,6>
 
 // approximately 11 instruction slots used
@@ -87,10 +87,10 @@ ret
 
 const BYTE BasicEffect_VSBasicVc[] =
 {
-     68,  88,  66,  67,  14, 111, 
-    121,  23,  84, 209, 204,  13, 
-     88, 119, 199, 214,  47, 120, 
-    170, 230,   1,   0,   0,   0, 
+     68,  88,  66,  67,  30,  87, 
+     37, 242,  28,  91, 100, 162, 
+    109, 142, 188,  18, 160, 193, 
+     51,  85,   1,   0,   0,   0, 
     160,   6,   0,   0,   4,   0, 
       0,   0,  48,   0,   0,   0, 
     156,   4,   0,   0, 224,   5, 
@@ -125,28 +125,28 @@ const BYTE BasicEffect_VSBasicVc[] =
      97, 114,  97, 112, 117,  99, 
     101,  45,  99, 111, 110, 116, 
     114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  67, 111, 109, 
-    109, 111, 110,  46, 102, 120, 
-    104,   0,  67,  58,  92,  85, 
-    115, 101, 114, 115,  92, 116, 
-    104, 111, 109,  97,  92,  68, 
-    111,  99, 117, 109, 101, 110, 
-    116, 115,  92,  99,  97, 114, 
-     97, 112, 117,  99, 101,  45, 
-     99, 111, 110, 116, 114, 111, 
-    108, 101, 114,  92,  75, 105, 
-    116, 115,  92,  68, 105, 114, 
-    101,  99, 116,  88,  84,  75, 
-     92,  83, 114,  99,  92,  83, 
-    104,  97, 100, 101, 114, 115, 
-     92,  66,  97, 115, 105,  99, 
-     69, 102, 102, 101,  99, 116, 
-     46, 102, 120,   0,  40,   0, 
-      0,   0, 122,   0,   0,   0, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  67, 111, 109, 109, 
+    111, 110,  46, 102, 120, 104, 
+      0,  67,  58,  92,  85, 115, 
+    101, 114, 115,  92, 116, 104, 
+    111, 109,  97,  92,  68, 111, 
+     99, 117, 109, 101, 110, 116, 
+    115,  92,  99,  97, 114,  97, 
+    112, 117,  99, 101,  45,  99, 
+    111, 110, 116, 114, 111, 108, 
+    101, 114,  92, 108, 105,  98, 
+     92,  68, 105, 114, 101,  99, 
+    116,  88,  84,  75,  92,  83, 
+    114,  99,  92,  83, 104,  97, 
+    100, 101, 114, 115,  92,  66, 
+     97, 115, 105,  99,  69, 102, 
+    102, 101,  99, 116,  46, 102, 
+    120,   0, 171, 171,  40,   0, 
+      0,   0, 121,   0,   0,   0, 
       0,   0, 255, 255,  56,   3, 
       0,   0,   0,   0, 255, 255, 
      80,   3,   0,   0,   0,   0, 

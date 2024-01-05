@@ -43,7 +43,7 @@
     dcl_texcoord v0  // vin<0,1,2,3>
     dcl_texcoord1 v1  // vin<4,5>
 
-#line 40 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 40 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     dp4 oPos.z, v0, c5  // ::VSAlphaTest<12>
 
 #line 11
@@ -56,15 +56,15 @@
     dp4 r0.y, v0, c4  // ::vout<1>
     dp4 r0.z, v0, c6  // ::vout<3>
 
-#line 26 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
+#line 26 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
     mad oPos.xy, r0.z, c0, r0  // ::VSAlphaTest<10,11>
     mov oPos.w, r0.z  // ::VSAlphaTest<13>
 
-#line 41 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 41 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     mov oT0, c1  // ::VSAlphaTest<0,1,2,3>
     mov oT1.xyz, c7.x  // ::VSAlphaTest<4,5,6>
 
-#line 33 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
+#line 33 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\AlphaTestEffect.fx"
     mov oT2.xy, v1  // ::VSAlphaTest<8,9>
 
 // approximately 12 instruction slots used
@@ -90,10 +90,10 @@ ret
 
 const BYTE AlphaTestEffect_VSAlphaTest[] =
 {
-     68,  88,  66,  67, 251, 205, 
-    223, 230,  39, 211, 109, 170, 
-     56, 133, 254, 146, 228, 114, 
-     26, 141,   1,   0,   0,   0, 
+     68,  88,  66,  67, 163, 172, 
+     80, 195,  32,  61,   4, 218, 
+     59,  69,  46, 162, 220, 147, 
+    174,   9,   1,   0,   0,   0, 
      16,   7,   0,   0,   4,   0, 
       0,   0,  48,   0,   0,   0, 
     208,   4,   0,   0,  44,   6, 
@@ -126,29 +126,29 @@ const BYTE AlphaTestEffect_VSAlphaTest[] =
      97, 114,  97, 112, 117,  99, 
     101,  45,  99, 111, 110, 116, 
     114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  67, 111, 109, 
-    109, 111, 110,  46, 102, 120, 
-    104,   0,  67,  58,  92,  85, 
-    115, 101, 114, 115,  92, 116, 
-    104, 111, 109,  97,  92,  68, 
-    111,  99, 117, 109, 101, 110, 
-    116, 115,  92,  99,  97, 114, 
-     97, 112, 117,  99, 101,  45, 
-     99, 111, 110, 116, 114, 111, 
-    108, 101, 114,  92,  75, 105, 
-    116, 115,  92,  68, 105, 114, 
-    101,  99, 116,  88,  84,  75, 
-     92,  83, 114,  99,  92,  83, 
-    104,  97, 100, 101, 114, 115, 
-     92,  65, 108, 112, 104,  97, 
-     84, 101, 115, 116,  69, 102, 
-    102, 101,  99, 116,  46, 102, 
-    120,   0,  40,   0,   0,   0, 
-    122,   0,   0,   0,   0,   0, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  67, 111, 109, 109, 
+    111, 110,  46, 102, 120, 104, 
+      0,  67,  58,  92,  85, 115, 
+    101, 114, 115,  92, 116, 104, 
+    111, 109,  97,  92,  68, 111, 
+     99, 117, 109, 101, 110, 116, 
+    115,  92,  99,  97, 114,  97, 
+    112, 117,  99, 101,  45,  99, 
+    111, 110, 116, 114, 111, 108, 
+    101, 114,  92, 108, 105,  98, 
+     92,  68, 105, 114, 101,  99, 
+    116,  88,  84,  75,  92,  83, 
+    114,  99,  92,  83, 104,  97, 
+    100, 101, 114, 115,  92,  65, 
+    108, 112, 104,  97,  84, 101, 
+    115, 116,  69, 102, 102, 101, 
+     99, 116,  46, 102, 120,   0, 
+    171, 171,  40,   0,   0,   0, 
+    121,   0,   0,   0,   0,   0, 
     255, 255, 112,   3,   0,   0, 
       0,   0, 255, 255, 136,   3, 
       0,   0,   0,   0, 255, 255, 

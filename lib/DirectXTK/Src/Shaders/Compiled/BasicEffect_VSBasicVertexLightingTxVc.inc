@@ -48,7 +48,7 @@
     dcl_texcoord2 v2  // vin<7,8>
     dcl_texcoord3 v3  // vin<9,10,11,12>
 
-#line 54 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 54 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     dp4 r0.x, v0, c15  // ::pos_ws<0>
     dp4 r0.y, v0, c16  // ::pos_ws<1>
     dp4 r0.z, v0, c17  // ::pos_ws<2>
@@ -114,28 +114,28 @@
 #line 60
     dp4 oPos.z, v0, c23  // ::VSBasicVertexLightingTxVc<12>
 
-#line 11 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Common.fxh"
+#line 11 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Common.fxh"
     dp4 r0.x, v0, c14
     max r0.x, r0.x, c25.x
     min oT1.w, r0.x, c25.y  // ::VSBasicVertexLightingTxVc<7>
 
-#line 43 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 43 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     mul r0.xyz, r2.y, c8
     mad r0.xyz, r2.x, c7, r0
     mad r0.xyz, r2.z, c9, r0
     mov r1.xyz, c1  // Parameters::DiffuseColor<0,1,2>
     mad r0.xyz, r0, r1, c2  // ::result<0,1,2>
 
-#line 238 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 238 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mul oT0.xyz, r0, v3  // ::VSBasicVertexLightingTxVc<0,1,2>
     mul oT0.w, v3.w, c1.w  // ::VSBasicVertexLightingTxVc<3>
 
-#line 60 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\Lighting.fxh"
+#line 60 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\Lighting.fxh"
     dp4 r0.x, v0, c21  // ::vout<0>
     dp4 r0.y, v0, c22  // ::vout<1>
     dp4 r0.z, v0, c24  // ::vout<3>
 
-#line 230 "C:\Users\thoma\Documents\carapuce-controler\Kits\DirectXTK\Src\Shaders\BasicEffect.fx"
+#line 230 "C:\Users\thoma\Documents\carapuce-controler\lib\DirectXTK\Src\Shaders\BasicEffect.fx"
     mad oPos.xy, r0.z, c0, r0  // ::VSBasicVertexLightingTxVc<10,11>
     mov oPos.w, r0.z  // ::VSBasicVertexLightingTxVc<13>
 
@@ -215,10 +215,10 @@ ret
 
 const BYTE BasicEffect_VSBasicVertexLightingTxVc[] =
 {
-     68,  88,  66,  67,  69,  66, 
-    141, 148, 223, 158, 215, 207, 
-     85, 180,  68, 240,  91,  94, 
-    221, 208,   1,   0,   0,   0, 
+     68,  88,  66,  67, 157,  64, 
+     49, 134,  75,   8, 210, 241, 
+     87, 145,  30, 243, 229, 138, 
+    166, 224,   1,   0,   0,   0, 
     100,  20,   0,   0,   4,   0, 
       0,   0,  48,   0,   0,   0, 
     252,  11,   0,   0,  68,  19, 
@@ -253,43 +253,43 @@ const BYTE BasicEffect_VSBasicVertexLightingTxVc[] =
      97, 114,  97, 112, 117,  99, 
     101,  45,  99, 111, 110, 116, 
     114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  76, 105, 103, 
-    104, 116, 105, 110, 103,  46, 
-    102, 120, 104,   0,  67,  58, 
-     92,  85, 115, 101, 114, 115, 
-     92, 116, 104, 111, 109,  97, 
-     92,  68, 111,  99, 117, 109, 
-    101, 110, 116, 115,  92,  99, 
-     97, 114,  97, 112, 117,  99, 
-    101,  45,  99, 111, 110, 116, 
-    114, 111, 108, 101, 114,  92, 
-     75, 105, 116, 115,  92,  68, 
-    105, 114, 101,  99, 116,  88, 
-     84,  75,  92,  83, 114,  99, 
-     92,  83, 104,  97, 100, 101, 
-    114, 115,  92,  67, 111, 109, 
-    109, 111, 110,  46, 102, 120, 
-    104,   0,  67,  58,  92,  85, 
-    115, 101, 114, 115,  92, 116, 
-    104, 111, 109,  97,  92,  68, 
-    111,  99, 117, 109, 101, 110, 
-    116, 115,  92,  99,  97, 114, 
-     97, 112, 117,  99, 101,  45, 
-     99, 111, 110, 116, 114, 111, 
-    108, 101, 114,  92,  75, 105, 
-    116, 115,  92,  68, 105, 114, 
+    108, 105,  98,  92,  68, 105, 
+    114, 101,  99, 116,  88,  84, 
+     75,  92,  83, 114,  99,  92, 
+     83, 104,  97, 100, 101, 114, 
+    115,  92,  76, 105, 103, 104, 
+    116, 105, 110, 103,  46, 102, 
+    120, 104,   0,  67,  58,  92, 
+     85, 115, 101, 114, 115,  92, 
+    116, 104, 111, 109,  97,  92, 
+     68, 111,  99, 117, 109, 101, 
+    110, 116, 115,  92,  99,  97, 
+    114,  97, 112, 117,  99, 101, 
+     45,  99, 111, 110, 116, 114, 
+    111, 108, 101, 114,  92, 108, 
+    105,  98,  92,  68, 105, 114, 
     101,  99, 116,  88,  84,  75, 
      92,  83, 114,  99,  92,  83, 
     104,  97, 100, 101, 114, 115, 
-     92,  66,  97, 115, 105,  99, 
-     69, 102, 102, 101,  99, 116, 
-     46, 102, 120,   0,  40,   0, 
-      0,   0, 124,   0,   0,   0, 
-    206,   0,   0,   0,   0,   0, 
+     92,  67, 111, 109, 109, 111, 
+    110,  46, 102, 120, 104,   0, 
+     67,  58,  92,  85, 115, 101, 
+    114, 115,  92, 116, 104, 111, 
+    109,  97,  92,  68, 111,  99, 
+    117, 109, 101, 110, 116, 115, 
+     92,  99,  97, 114,  97, 112, 
+    117,  99, 101,  45,  99, 111, 
+    110, 116, 114, 111, 108, 101, 
+    114,  92, 108, 105,  98,  92, 
+     68, 105, 114, 101,  99, 116, 
+     88,  84,  75,  92,  83, 114, 
+     99,  92,  83, 104,  97, 100, 
+    101, 114, 115,  92,  66,  97, 
+    115, 105,  99,  69, 102, 102, 
+    101,  99, 116,  46, 102, 120, 
+      0, 171, 171, 171,  40,   0, 
+      0,   0, 123,   0,   0,   0, 
+    204,   0,   0,   0,   0,   0, 
     255, 255, 236,   7,   0,   0, 
       0,   0, 255, 255,   4,   8, 
       0,   0,   0,   0, 255, 255, 
