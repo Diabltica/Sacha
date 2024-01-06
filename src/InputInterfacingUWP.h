@@ -78,6 +78,8 @@ private:
 
     void CreateDeviceDependentResources();
     void CreateWindowSizeDependentResources();
+
+    double FixStringValue(double value);
     
     // Device resources.
     std::unique_ptr<DX::DeviceResources>    m_deviceResources;

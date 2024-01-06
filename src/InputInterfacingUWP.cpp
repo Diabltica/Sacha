@@ -41,35 +41,46 @@ namespace
 		L"arcade sticks\n";
 }
 
+double Wheel::FixStringValue(double value) {
+	if (value > 1){
+		value = 1;
+	}
+	else if (value < -1) {
+		value = -1;
+	}
+	return value;
+}
+
 void Wheel::DrawWheel(XMFLOAT2 startPosition)
 {
 	wchar_t wheelString[128] = {};
-	double percentages[7] = { 0.05, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0 };
-	swprintf_s(wheelString, L"Wheel %1.3f", m_wheelReading.Wheel * (2.0 / 0.34));
+	double percentages[7] = { 0.05, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0 };	
+
+	swprintf_s(wheelString, L"Angle du volant %1.3f", FixStringValue(m_wheelReading.Wheel * (2.0 / 0.34)));
 	m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
 	startPosition.y += m_font->GetLineSpacing() * 1.1f;
 
-	swprintf_s(wheelString, L"Throttle %1.3f", m_wheelReading.Throttle * (2 - percentages[currentGear - 1]));
+	swprintf_s(wheelString, L"Accelerateur %1.3f", FixStringValue(m_wheelReading.Throttle * (2 - percentages[currentGear - 1])));
 	m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
 	startPosition.y += m_font->GetLineSpacing() * 1.1f;
 
-	swprintf_s(wheelString, L"Break %1.3f", m_wheelReading.Brake * (2 - percentages[currentGear - 1]));
+	swprintf_s(wheelString, L"Frein (marche arriere) %1.3f", FixStringValue(m_wheelReading.Brake * (2 - percentages[currentGear - 1])));
 	m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
 	startPosition.y += m_font->GetLineSpacing() * 1.1f;
 
-	if (m_currentWheel->HasClutch)
+	/*if (m_currentWheel->HasClutch)
 	{
-		swprintf_s(wheelString, L"Clutch %1.3f", m_wheelReading.Clutch);
+		swprintf_s(wheelString, L"Clutch %1.3f", FixStringValue(m_wheelReading.Clutch));
 		m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
 		startPosition.y += m_font->GetLineSpacing() * 1.1f;
 	}
 
 	if (m_currentWheel->HasHandbrake)
 	{
-		swprintf_s(wheelString, L"Handbrake %1.3f", m_wheelReading.Handbrake);
+		swprintf_s(wheelString, L"Handbrake %1.3f", FixStringValue(m_wheelReading.Handbrake));
 		m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
 		startPosition.y += m_font->GetLineSpacing() * 1.1f;
-	}
+	}*/
 
 	if (m_currentWheel->HasPatternShifter)
 	{
@@ -82,7 +93,7 @@ void Wheel::DrawWheel(XMFLOAT2 startPosition)
 		previousStateP = m_buttonReading == RacingWheelButtons::NextGear;
 		previousStateM = m_buttonReading == RacingWheelButtons::PreviousGear;
 
-		swprintf_s(wheelString, L"Shifter %d of %d", currentGear, m_currentWheel->MaxPatternShifterGear);
+		swprintf_s(wheelString, L"Vitesse %d of %d", currentGear, m_currentWheel->MaxPatternShifterGear);
 		m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
 		startPosition.y += m_font->GetLineSpacing() * 1.1f;
 	}
@@ -136,6 +147,8 @@ void Wheel::DrawWheel(XMFLOAT2 startPosition)
 	case Windows::Gaming::Input::RacingWheelButtons::Button8:
 		break;
 	case Windows::Gaming::Input::RacingWheelButtons::Button9:
+		m_y = 127;
+		m_x = 127;
 		break;
 	case Windows::Gaming::Input::RacingWheelButtons::Button10:
 		break;
@@ -254,16 +267,6 @@ void Wheel::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATI
 	m_effectLoaded = false;
 	m_x = 127;
 	m_y = 127;
-	//Create an effect
-	/*m_effect = ref new ForceFeedback::ConditionForceEffect(ForceFeedback::ConditionForceEffectKind::Spring);
-	Windows::Foundation::Numerics::float3 vector;
-	vector.x = 1.f;
-	vector.y = 0.f;
-	vector.z = 0.f;
-	m_effect->SetParameters(vector,
-							2.0f, -2.0f,
-							1.0f, -1.0f,
-							0.0f, 0.0f);*/
 
 	m_navCollection = ref new Vector<UINavigationController^>();
 	m_wheelCollection = ref new Vector<RacingWheel^>();
