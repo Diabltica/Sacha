@@ -92,7 +92,7 @@ private:
     Windows::Gaming::Input::RacingWheel^                m_currentWheel;
     Windows::Gaming::Input::RacingWheelReading          m_wheelReading;
     Windows::Gaming::Input::RacingWheelButtons          m_buttonReading;
-    Windows::Gaming::Input::ForceFeedback::ConstantForceEffect^ m_effect;
+    Windows::Gaming::Input::ForceFeedback::ConditionForceEffect^ m_effect;
 
     Platform::Collections::Vector<Windows::Gaming::Input::UINavigationController^>^ m_navCollection;
     Platform::Collections::Vector<Windows::Gaming::Input::RacingWheel^>^ m_wheelCollection;
