@@ -10,6 +10,9 @@
 #include "DeviceResources.h"
 #include "StepTimer.h"
 #include <collection.h>
+#include <sstream>
+#include <chrono>
+#include <ctime>    
 
 enum Modes
 {
@@ -60,7 +63,7 @@ public:
     void OnResuming();
     void OnWindowSizeChanged(int width, int height, DXGI_MODE_ROTATION rotation);
     void ValidateDevice();
-
+    void setCarData(std::string msg);
     // Properties
     void GetDefaultSize( int& width, int& height ) const;
     wheelData getData();
@@ -80,6 +83,9 @@ private:
     void CreateWindowSizeDependentResources();
 
     double FixStringValue(double value);
+
+    void updateSpeed();
+    void updateBatteryLevel();
     
     // Device resources.
     std::unique_ptr<DX::DeviceResources>    m_deviceResources;
@@ -106,7 +112,11 @@ private:
     std::wstring            m_buttonString;
     int                     m_x;
     int                     m_y;
-
+    std::string             m_msg;
     // Rendering loop timer.
     DX::StepTimer                           m_timer;
+    std::chrono::steady_clock::time_point m_lastTimestamp;
+    bool                    m_isFirstMessage;
+    double                  currentSpeed;
+    double                  currentBatteryLevel;
 };

@@ -71,6 +71,7 @@ public:
                 m_steeringWheel->Tick();
                 CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
                 m_com->updateData(m_steeringWheel->getData());
+                m_steeringWheel->setCarData(m_com->getMessage());
             }
             else
             {
@@ -82,7 +83,6 @@ public:
     virtual void Uninitialize()
     {
         m_steeringWheel.reset();
-        m_com->stopThread();
     }
 
     virtual void SetWindow(CoreWindow^ window)
@@ -249,6 +249,8 @@ protected:
 
     void OnWindowClosed(CoreWindow^ sender, CoreWindowEventArgs^ args)
     {
+        m_com->closeConnection();
+        m_com->stopThread();
         m_exit = true;
     }
 

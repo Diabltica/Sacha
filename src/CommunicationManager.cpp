@@ -29,6 +29,10 @@ void CommunicationManager::createConnection(const std::string& uri) {
     }
 }
 
+void CommunicationManager::closeConnection() {
+    client_.close(this->hdl_, websocketpp::close::status::going_away, "Good bye my friend");
+}
+
 void CommunicationManager::run() {
     // Note that connect here only requests a connection. No network messages are
     // exchanged until the event loop starts running in the next line.
@@ -45,8 +49,11 @@ void CommunicationManager::on_message(websocketpp::connection_hdl hdl, message_p
         << " and message: " << msg->get_payload()
         << std::endl;
 
+    this->msg_ = msg->get_payload();
+    
     websocketpp::lib::error_code ec;
 
+    this->hdl_ = hdl;
     client_.send(hdl, this->messageFormater(), msg->get_opcode(), ec);
     if (ec) {
         std::cout << "Echo failed because: " << ec.message() << std::endl;
@@ -82,4 +89,8 @@ std::string CommunicationManager::messageFormater() {
 
     trame << "D" << direction << "P" << speed << "X" << this->data.x << "Y" << this->data.y;
     return trame.str();
+}
+
+std::string CommunicationManager::getMessage() {
+    return msg_;
 }

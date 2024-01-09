@@ -173,6 +173,15 @@ void Wheel::DrawWheel(XMFLOAT2 startPosition)
 	swprintf_s(wheelString, L"Position Y %d", m_y);
 	m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Green);
 	startPosition.y += m_font->GetLineSpacing() * 1.1f;
+
+	this->updateSpeed();
+	this->updateBatteryLevel();
+	swprintf_s(wheelString, L"Batterie %1.3f %", this->currentBatteryLevel);
+	m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Orange);
+	startPosition.y += m_font->GetLineSpacing() * 1.1f;
+	swprintf_s(wheelString, L"Vitesse %1.3f km/h", this->currentSpeed * 3.6);
+	m_font->DrawString(m_spriteBatch.get(), wheelString, startPosition, ATG::Colors::Orange);
+	startPosition.y += m_font->GetLineSpacing() * 1.1f;
 }
 
 void Wheel::UpdateNavController()
@@ -267,6 +276,7 @@ void Wheel::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATI
 	m_effectLoaded = false;
 	m_x = 127;
 	m_y = 127;
+	m_isFirstMessage = true;
 
 	m_navCollection = ref new Vector<UINavigationController^>();
 	m_wheelCollection = ref new Vector<RacingWheel^>();
@@ -526,5 +536,44 @@ Wheel::wheelData Wheel::getData() {
 		m_x,
 		m_y
 	};
+}
+
+void Wheel::setCarData(std::string msg) {
+	this->m_msg;
+}
+
+void Wheel::updateSpeed() {
+	// Trame V255B2.5
+	if (this->m_isFirstMessage) {
+		this->m_lastTimestamp = std::chrono::steady_clock::now();
+		this->m_isFirstMessage = false;
+		this->currentSpeed = 0;
+		return;
+	}
+
+	double accel;
+
+	std::istringstream iss(this->m_msg);
+
+	char dummy;  // Pour ignorer le caractère 'V'
+	iss >> dummy >> accel;
+	std::chrono::steady_clock::time_point currentTime = std::chrono::steady_clock::now();
+
+	auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - this->m_lastTimestamp).count();
+
+	this->currentSpeed += accel * elapsedTime;
+	
+	this->m_lastTimestamp = currentTime;
+}
+
+void Wheel::updateBatteryLevel() {
+	//1.3 et 2
+
+	double batt;
+	size_t pos = this->m_msg.find('B');
+	
+	batt = std::strtod(this->m_msg.c_str() + pos + 1, nullptr);
+
+	this->currentBatteryLevel = 100.0 * (batt - 1.3) / (2 - 1.3);
 }
 #pragma endregion

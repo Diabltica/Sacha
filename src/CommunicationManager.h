@@ -16,13 +16,16 @@ public:
     CommunicationManager();
     void run();
     void on_message(websocketpp::connection_hdl hdl, message_ptr msg);
+    std::string getMessage();
     void createConnection(const std::string& uri);
     void startThread();
     void stopThread();
     void updateData(Wheel::wheelData newData);
+    void closeConnection();
 private:
     std::string messageFormater();
-
+    std::string            msg_;
+    websocketpp::connection_hdl hdl_;
     client                 client_;
     connection_ptr         connection_ptr_;
     Wheel::wheelData       data;
